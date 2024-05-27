@@ -25,10 +25,10 @@ public class EmployeeController {
     @GetMapping("/employees")
     public String getAllProducts(Model model,
                                  @RequestParam(required = false, defaultValue = "1") int page,
-                                 @RequestParam(required = false, defaultValue = "10") int pageSize) {
+                                 @RequestParam(required = false, defaultValue = "50") int pageSize) {
         PageResponse<Employee> pageData = new PageResponseImpl<>(empService.getAllEmployees(), page, pageSize);
         model.addAttribute("pageData", pageData);
-        return "employee-list";
+        return "/attendance/employee-list";
     }
 
     @GetMapping("/products/{id}")
